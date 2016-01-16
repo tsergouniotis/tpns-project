@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+
+	<changeSet author="thanasis.sergouniotis" id="insert-users">
+
+		<insert tableName="users">
+			<column name="user_id" valueSequenceNext="userseq" />
+			<column name="username" value="admin" />
+			<column name="password" value="admin" />
+		</insert>
+
+		<insert tableName="users">
+			<column name="user_id" valueSequenceNext="userseq" />
+			<column name="username" value="author" />
+			<column name="password" value="author" />
+			<column name="firstname" value="Carl" />
+			<column name="surname" value="Bernstein" />
+		</insert>
+
+		<insert tableName="users">
+			<column name="user_id" valueSequenceNext="userseq" />
+			<column name="username" value="chief" />
+			<column name="password" value="chief" />
+		</insert>
+
+		<insert tableName="users">
+			<column name="user_id" valueSequenceNext="userseq" />
+			<column name="username" value="onsports" />
+			<column name="password" value="onsports" />
+		</insert>
+
+	</changeSet>
+
+	<changeSet author="thanasis.sergouniotis" id="insert-users-roles">
+
+		<insert tableName="users_roles">
+			<column name="user_id"
+				valueComputed="(select user_id from users where username='admin')" />
+			<column name="role" value="ADMIN" />
+		</insert>
+
+		<insert tableName="users_roles">
+			<column name="user_id"
+				valueComputed="(select user_id from users where username='author')" />
+			<column name="role" value="AUTHOR" />
+		</insert>
+
+		<insert tableName="users_roles">
+			<column name="user_id"
+				valueComputed="(select user_id from users where username='chief')" />
+			<column name="role" value="CHIEF_EDITOR" />
+		</insert>
+
+		<insert tableName="users_roles">
+			<column name="user_id"
+				valueComputed="(select user_id from users where username='onsports')" />
+			<column name="role" value="APPLICATION" />
+		</insert>
+
+	</changeSet>
+
+	<changeSet author="thanasis.sergouniotis" id="insert-categories">
+
+		<insert tableName="categories">
+			<column name="category_id" valueSequenceNext="CATEGORYSEQ" />
+			<column name="category_name" value="politics" />
+		</insert>
+
+		<insert tableName="categories">
+			<column name="category_id" valueSequenceNext="CATEGORYSEQ" />
+			<column name="category_name" value="economy" />
+		</insert>
+
+		<insert tableName="categories">
+			<column name="category_id" valueSequenceNext="CATEGORYSEQ" />
+			<column name="category_name" value="sports" />
+		</insert>
+
+		<insert tableName="categories">
+			<column name="category_id" valueSequenceNext="CATEGORYSEQ" />
+			<column name="category_name" value="technology" />
+		</insert>
+
+		<insert tableName="categories">
+			<column name="category_id" valueSequenceNext="CATEGORYSEQ" />
+			<column name="category_name" value="social" />
+		</insert>
+
+	</changeSet>
+
+	<changeSet author="thanasis.sergouniotis" id="insert-application-parameters">
+
+		<insert tableName="application_parameters">
+			<column name="key" value="article.lucene.directory" />
+			<column name="value" value="/home/sergouniotis/Downloads/tpns/index" />
+		</insert>
+
+		<insert tableName="application_parameters">
+			<column name="key" value="cassandra.contact.point.address" />
+			<column name="value" value="localhost" />
+		</insert>
+
+		<insert tableName="application_parameters">
+			<column name="key" value="cassandra.core.connections.per.host" />
+			<column name="value" value="4" />
+		</insert>
+
+		<insert tableName="application_parameters">
+			<column name="key" value="cassandra.max.connections.per.host" />
+			<column name="value" value="8" />
+		</insert>
+		
+		<insert tableName="application_parameters">
+			<column name="key" value="user.service.uri" />
+			<column name="value" value="http://localhost:8080/user-service/v1/user" />
+		</insert>		
+
+	</changeSet>
+
+</databaseChangeLog>
+

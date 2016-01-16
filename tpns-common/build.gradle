@@ -1,0 +1,7 @@
+apply plugin: 'java'
+
+dependencies{
+
+	compile("org.hibernate:hibernate-validator:5.2.2.Final")
+
+}

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet author="thanasis.sergouniotis" id="create-users-table">
+
+		<createTable tableName="users">
+			<column name="user_id" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+			<column name="username" type="VARCHAR(255)">
+				<constraints unique="true" />
+			</column>
+			<column name="firstname" type="VARCHAR(255)" />
+			<column name="surname" type="VARCHAR(255)" />
+			<column name="password" type="VARCHAR(255)" />
+			<column name="phone" type="VARCHAR(255)" />
+			<column name="fax" type="VARCHAR(255)" />
+			<column name="email" type="VARCHAR(255)" />
+			<column name="street" type="VARCHAR(255)" />
+			<column name="number" type="VARCHAR(255)" />
+			<column name="city" type="VARCHAR(255)" />
+			<column name="created_at" type="DATETIME"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+			<column name="updated_at" type="DATETIME" />
+		</createTable>
+
+		<addPrimaryKey tableName="users" columnNames="user_id" />
+
+		<createSequence sequenceName="userseq" incrementBy="1"
+			startValue="1" />
+
+		<createIndex tableName="users" indexName="username_idx">
+			<column name="username" />
+		</createIndex>
+	</changeSet>
+
+	<changeSet author="thanasis.sergouniotis" id="create-users-roles-table">
+
+		<createTable tableName="users_roles">
+			<column name="user_id" type="SMALLINT">
+				<constraints nullable="false" />
+			</column>
+			<column name="role" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<addPrimaryKey tableName="users_roles" columnNames="user_id, role"
+			constraintName="users_pk" />
+
+		<addForeignKeyConstraint baseTableName="users_roles"
+			baseColumnNames="user_id" constraintName="user_role_fk"
+			referencedTableName="users" referencedColumnNames="user_id" />
+
+	</changeSet>
+
+	<changeSet author="thanasis.sergouniotis" id="create-categories-table">
+
+		<createTable tableName="categories">
+			<column name="category_id" type="SMALLINT">
+				<constraints nullable="false" />
+			</column>
+			<column name="category_name" type="VARCHAR(255)">
+				<constraints nullable="false" unique="true" />
+			</column>
+		</createTable>
+
+		<addPrimaryKey tableName="categories" columnNames="category_id"
+			constraintName="categories_pk" />
+
+		<createSequence sequenceName="categoryseq" startValue="1"
+			incrementBy="1" />
+
+	</changeSet>
+
+	<changeSet author="thanasis.sergouniotis" id="create-articles-table">
+		<createTable tableName="articles">
+			<column name="article_id" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+			<column name="subject" type="VARCHAR(255)" />
+			<column name="content" type="VARCHAR(20480)" />
+			<column name="short_description" type="VARCHAR(1024)" />
+			<column name="category_id" type="SMALLINT" />
+			<column name="author" type="VARCHAR(255)" />
+			<column name="status" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="created_at" type="DATETIME"
+				defaultValueComputed="CURRENT_TIMESTAMP" />
+			<column name="updated_at" type="DATETIME" />
+			<column name="posted_at" type="DATETIME" />
+			<column name="version" type="INTEGER" />
+		</createTable>
+
+		<addPrimaryKey tableName="articles" columnNames="article_id"
+			constraintName="articles_pk" />
+
+		<createSequence sequenceName="articleseq" incrementBy="1"
+			startValue="1" />
+
+		<addForeignKeyConstraint constraintName="article_category_fk"
+			referencedTableName="categories" baseColumnNames="category_id"
+			baseTableName="articles" referencedColumnNames="category_id" />
+
+		<createIndex indexName="article_author_idx" tableName="articles">
+			<column name="author" />
+		</createIndex>
+
+	</changeSet>
+
+	<changeSet author="thanasis.sergouniotis" id="create-audit-table">
+		<createTable tableName="audit">
+			<column name="audit_id" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+			<column name="article_id" type="BIGINT">
+				<constraints nullable="true" /><!-- unfortunatelly this has 
+					to be done because JPA handles Cascade.persist on one2many relationships 
+					as described bellow : 1st inserts the owning entity 2nd inserts the not owning 
+					entity 3rd updates the not owning entity ( updates the fk- in our case the 
+					article_id ) -->
+			</column>
+			<column name="who" type="VARCHAR(255)" />
+			<column name="what" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="when" type="DATETIME" defaultValueComputed="CURRENT_TIMESTAMP" />
+		</createTable>
+
+		<addPrimaryKey tableName="audit" columnNames="audit_id"
+			constraintName="audit_pk" />
+
+		<createSequence sequenceName="auditseq" incrementBy="1"
+			startValue="1" />
+
+		<addForeignKeyConstraint constraintName="article_audit_fk"
+			referencedTableName="articles" baseColumnNames="article_id"
+			baseTableName="audit" referencedColumnNames="article_id" />
+
+		<createIndex indexName="audit_who_idx" tableName="audit">
+			<column name="who" />
+		</createIndex>
+
+	</changeSet>
+
+	<changeSet author="panos.zografos" id="create-media-resources-table">
+
+		<createTable tableName="article_resources">
+			<column name="article_id" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+			<column name="resource_id" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<createTable tableName="resources">
+			<column name="resource_id" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+			<column name="resource_type" type="VARCHAR(50)" />
+			<column name="url" type="VARCHAR(2048)" />
+		</createTable>
+
+		<createSequence sequenceName="MEDIARESOURCESEQ"
+			startValue="1" incrementBy="1" />
+
+		<addPrimaryKey tableName="resources" columnNames="resource_id"
+			constraintName="media_resources_pk" />
+
+		<addForeignKeyConstraint constraintName="article_resource_fk"
+			referencedTableName="articles" baseColumnNames="article_id"
+			baseTableName="article_resources" referencedColumnNames="article_id" />
+
+		<addForeignKeyConstraint constraintName="media_resource_fk"
+			referencedTableName="resources" baseColumnNames="resource_id"
+			baseTableName="article_resources" referencedColumnNames="resource_id" />
+
+	</changeSet>
+
+	<changeSet author="thanasis.sergouniotis" id="create-keyword-tables">
+		<createTable tableName="keywords">
+			<column name="keyword" type="VARCHAR(1024)">
+				<constraints nullable="false" />
+			</column>
+			<column name="version" type="INTEGER" />
+		</createTable>
+
+		<addPrimaryKey tableName="keywords" columnNames="keyword"
+			constraintName="keyword_pk" />
+
+
+		<createTable tableName="article_keywords">
+			<column name="keyword" type="VARCHAR(1024)">
+				<constraints nullable="false" />
+			</column>
+			<column name="article_id" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<addForeignKeyConstraint constraintName="article_keyword_keyword_fk"
+			referencedTableName="keywords" baseColumnNames="keyword"
+			baseTableName="article_keywords" referencedColumnNames="keyword" />
+
+		<addForeignKeyConstraint constraintName="article_keyword_article_fk"
+			referencedTableName="articles" baseColumnNames="article_id"
+			baseTableName="article_keywords" referencedColumnNames="article_id" />
+
+
+	</changeSet>
+
+	<changeSet author="thanasis.sergouniotis" id="create-applications-table">
+		<createTable tableName="applications">
+			<column name="application_id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="endpoint" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="client_id" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="version" type="INTEGER" />
+		</createTable>
+
+		<addPrimaryKey tableName="applications" columnNames="application_id"
+			constraintName="application_pk" />
+
+	</changeSet>
+
+	<changeSet author="thanasis.sergouniotis" id="create-application-params-table">
+
+		<createTable tableName="application_parameters">
+			<column name="key" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="value" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<addPrimaryKey tableName="application_parameters"
+			columnNames="key" constraintName="application_parameters_pk" />
+
+	</changeSet>
+
+</databaseChangeLog>
+

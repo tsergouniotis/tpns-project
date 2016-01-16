@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/persistence/orm_2_1.xsd"
+	version="2.1">
+
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete />
+		<persistence-unit-defaults>
+			<cascade-persist />
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+
+	<entity class="com.tpns.user.domain.User">
+		<table name="users" />
+		<named-query name="User.findByUsername">
+			<query>select u from User u where u.username=:username</query>
+		</named-query>
+		<attributes>
+			<id name="id" access="FIELD">
+				<column name="user_id" />
+				<generated-value strategy="SEQUENCE" generator="USERSEQ" />
+				<sequence-generator name="USERSEQ" sequence-name="USERSEQ"
+					allocation-size="1" />
+			</id>
+			<basic name="firstname">
+				<column name="firstname" length="255" />
+			</basic>
+			<basic name="surname">
+				<column name="surname" length="255" />
+			</basic>
+			<basic name="username">
+				<column name="username" length="255" />
+			</basic>
+			<basic name="password">
+				<column name="password" length="2048" />
+			</basic>
+			<element-collection name="roles" fetch="EAGER">
+				<column name="role"/>
+				<enumerated>STRING</enumerated>
+				<collection-table name="users_roles">
+					<join-column name="user_id" />
+				</collection-table>
+			</element-collection>
+			<embedded name="contact" />
+		</attributes>
+	</entity>
+
+
+
+	<embeddable class="com.tpns.user.domain.ContactInfo">
+		<attributes>
+			<basic name="phone">
+				<column name="phone" />
+			</basic>
+			<basic name="fax">
+				<column name="fax" />
+			</basic>
+			<basic name="email">
+				<column name="email" />
+			</basic>
+			<embedded name="address" />
+		</attributes>
+	</embeddable>
+
+	<embeddable class="com.tpns.user.domain.Address">
+		<attributes>
+			<basic name="street">
+				<column name="street" />
+			</basic>
+			<basic name="number">
+				<column name="number" />
+			</basic>
+			<basic name="city">
+				<column name="city" />
+			</basic>
+		</attributes>
+	</embeddable>
+
+</entity-mappings>

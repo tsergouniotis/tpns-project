@@ -1,0 +1,39 @@
+apply plugin: 'org.liquibase.gradle'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.liquibase:liquibase-gradle-plugin:1.1.1"
+		classpath "org.postgresql:postgresql:9.3-1100-jdbc4"
+    }
+}
+
+
+liquibase {
+  activities {
+    main {
+      changeLogFile 'src/main/db/db.changelog-master.xml'
+      url 'jdbc:postgresql://localhost:5432/tpns'
+      username 'tpns'
+      password 'tpns'
+    }
+    export {
+      changeLogFile 'src/main/db/db.changelog-master.xml'
+      outputFile 'dbscripts/tpns-data.sql'
+      liquibaseCatalogName 'tpns'
+      url 'jdbc:postgresql://localhost:5432/tpns'
+      username 'tpns'
+      password 'tpns'
+    }
+    //runLists{main}
+  }
+}
+
+task copyToDockerFolder(type: Copy) {
+    from('dbscripts/')
+    into('../tpns-docker-images/database/postgres/dbscripts')
+    include('*.sql')
+}
+
