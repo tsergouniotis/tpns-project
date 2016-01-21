@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xmlns:oauth2="http://www.springframework.org/schema/security/oauth2"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop.xsd 
+http://www.springframework.org/schema/data/jpa 
+http://www.springframework.org/schema/data/jpa/spring-jpa.xsd 
+http://www.springframework.org/schema/task
+http://www.springframework.org/schema/task/spring-task.xsd 
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx.xsd
+http://www.springframework.org/schema/security
+http://www.springframework.org/schema/security/spring-security.xsd 
+http://www.springframework.org/schema/security/oauth2 
+http://www.springframework.org/schema/security/spring-security-oauth2.xsd
+http://www.springframework.org/schema/util 
+http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+	<sec:http create-session="never" use-expressions="true"
+		pattern="/v1/article/**" authentication-manager-ref="oauthAuthenticationManager"
+		entry-point-ref="oauthAuthenticationEntryPoint">
+		<sec:intercept-url pattern="v1/article/**" access="permitAll()" />
+		<sec:csrf disabled="true" />
+		<sec:anonymous enabled="true" />
+		<sec:custom-filter ref="oauthResourceFilter"
+			position="PRE_AUTH_FILTER" />
+	</sec:http>
+
+	<bean id="oauthAuthenticationEntryPoint"
+		class="org.springframework.security.oauth2.provider.error.OAuth2AuthenticationEntryPoint" />
+
+	<bean id="oauthResourceFilter"
+		class="org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationProcessingFilter">
+		<property name="authenticationManager" ref="oauthAuthenticationManager" />
+	</bean>
+
+	<oauth2:resource-server id="oauthResourceFilter"
+		resource-id="article-resources" authentication-manager-ref="oauthAuthenticationManager" />
+
+	<bean id="oauthAuthenticationManager"
+		class="org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationManager">
+		<property name="tokenServices" ref="remoteTokenServices" />
+		<property name="clientDetailsService" ref="client-details-service" />
+		<property name="resourceId" value="article-resources" />
+	</bean>
+
+	<bean id="remoteTokenServices"
+		class="org.springframework.security.oauth2.provider.token.RemoteTokenServices">
+		<property name="restTemplate" ref="restTemplate" />
+		<property name="checkTokenEndpointUrl" value="http://localhost:8081/user-service/oauth/check_token" />
+		<property name="clientId" value="article-app" />
+		<property name="clientSecret" value="secret" />
+	</bean>
+
+	<bean class="org.springframework.web.client.RestTemplate"  id="restTemplate"/>
+		
+	<oauth2:client-details-service id="client-details-service">
+		<oauth2:client client-id="my-trusted-client"
+			authorized-grant-types="password,authorization_code,refresh_token,implicit"
+			scope="read,write,trust" resource-ids="user-resources,article-resources"
+			access-token-validity="60" authorities="ROLE_AUTHOR" />
+		<oauth2:client client-id="my-client-with-registered-redirect"
+			authorized-grant-types="authorization_code" scope="read,trust"
+			resource-ids="user-resources,article-resources" authorities="ROLE_AUTHOR" redirect-uri="http://anywhere?key=value" />
+		<oauth2:client client-id="article-app" secret="secret"
+			authorized-grant-types="password,client_credentials" scope="read"
+			resource-ids="user-resources,article-resources" access-token-validity="3600"
+			authorities="ROLE_AUTHOR" />
+	</oauth2:client-details-service>		
+
+</beans>

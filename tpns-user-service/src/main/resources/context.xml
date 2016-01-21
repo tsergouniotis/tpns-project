@@ -20,10 +20,8 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
 	<aop:aspectj-autoproxy />
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	<jpa:repositories base-package="com.tpns.article.repository" />
-<!-- 	<import resource="classpath:sec.xml" /> -->
-	<!-- <import resource="classpath:security.xml" /> -->
-	<!-- <import resource="classpath:security-context.xml" /> -->
-
+	<import resource="classpath:security/security-oauth.xml" />
+	
 
 	<bean id="jpaVendorAdapter"
 		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
@@ -33,9 +31,6 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<!-- <property name="persistenceUnitPostProcessors"> <list> <bean class="org.springframework.data.jpa.support.ClasspathScanningPersistenceUnitPostProcessor"> 
-			<constructor-arg value="com.acme.domain" /> <property name="mappingFileNamePattern" 
-			value="**/*Mapping.xml" /> </bean> </list> </property> -->
 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
 		<property name="packagesToScan" value="com.tpns" />
 		<property name="mappingResources" value="META-INF/orm.xml" />

@@ -2,8 +2,6 @@ package com.tpns.article;
 
 import java.util.List;
 
-import javax.annotation.security.RolesAllowed;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -36,7 +34,6 @@ public class ArticleController {
 		return service.findByCategory(catName);
 	}
 
-	@RolesAllowed({ "AUTHOR" })
 	@RequestMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, method = RequestMethod.GET, path = "/{id}")
 	public ResponseEntity<Article> find(@PathVariable("id") Long id) throws Exception {
 		Article article = service.find(id);
