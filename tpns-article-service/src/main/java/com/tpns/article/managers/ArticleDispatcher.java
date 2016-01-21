@@ -65,8 +65,8 @@ public class ArticleDispatcher {
 		ResponseEntity<String> result = restTemplate.exchange(destination, HttpMethod.PUT, entity, String.class);
 
 		if (!HttpStatus.ACCEPTED.equals(result.getStatusCode())) {
-			final StringBuilder builder = new StringBuilder("Article did not submitted successfully to : ").append(destination).append(". Status : ").append(result.getStatusCode())
-					.append(":").append(result.getBody());
+			final StringBuilder builder = new StringBuilder("Article did not submitted successfully to : ").append(destination).append(". Status : ")
+					.append(result.getStatusCode()).append(":").append(result.getBody());
 			LOGGER.warn(builder.toString());
 		}
 

@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.stereotype.Component;
-
-import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.Row;
+import org.springframework.data.cassandra.core.CassandraOperations;
 
 @Component
 public class CassandraSynchronizer extends ThreadPoolTaskScheduler {
@@ -20,21 +18,16 @@ public class CassandraSynchronizer extends ThreadPoolTaskScheduler {
 
 	private final AtomicInteger checks = new AtomicInteger();
 
-//	@Autowired
-	private TpnsCassandraSession session;
+	@Autowired
+	private CassandraOperations cassandraOperations;
 
 	@Scheduled(fixedRate = 60000)
 	private void checkOnTheDaughters() {
 
-/*		final String query = "SELECT article_id FROM tpns.articles";
-		final ResultSet result = session.execute(query);
+		final String cql = "SELECT article_id FROM tpns.articles";
 
-		for (final Row row : result) {
+		cassandraOperations.execute(cql);
 
-			System.out.println(row.getLong("article_id"));
-
-		}
-		checks.incrementAndGet();*/
 	}
 
 }

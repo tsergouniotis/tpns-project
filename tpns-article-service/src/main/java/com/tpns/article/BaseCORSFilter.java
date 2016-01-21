@@ -11,18 +11,18 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class BaseCORSFilter {
 
-    private static final Set<String> EMPTY = new HashSet<String>();
+	private static final Set<String> EMPTY = new HashSet<String>();
 
-    private Set<String> parseAllowedOrigins(String allowedOriginsString) {
-        if(!StringUtils.isEmpty(allowedOriginsString)) {
-            return new HashSet<String>(Arrays.asList(allowedOriginsString.split(",")));
-        } else {
-            return EMPTY;
-        }
+	private Set<String> parseAllowedOrigins(String allowedOriginsString) {
+		if (!StringUtils.isEmpty(allowedOriginsString)) {
+			return new HashSet<String>(Arrays.asList(allowedOriginsString.split(",")));
+		} else {
+			return EMPTY;
+		}
 
-    }
+	}
 
-    public Set<String> getAllowedOrigins(String allowedOriginsString) {
-        return parseAllowedOrigins(allowedOriginsString);
-    }
+	public Set<String> getAllowedOrigins(String allowedOriginsString) {
+		return parseAllowedOrigins(allowedOriginsString);
+	}
 }

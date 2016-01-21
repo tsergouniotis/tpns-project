@@ -20,11 +20,11 @@ public class ArticleModuleInitializer extends PropertyPlaceholderConfigurer {
 	@Override
 	protected void loadProperties(Properties props) throws IOException {
 
-/*		List<ApplicationParameter> parameters = applicationParameterDAO.findAll();
+		/*		List<ApplicationParameter> parameters = applicationParameterDAO.findAll();
 
-		for (ApplicationParameter param : parameters) {
-			props.put(param.getKey(), param.getValue());
-		}*/
+		 for (ApplicationParameter param : parameters) {
+		 props.put(param.getKey(), param.getValue());
+		 }*/
 
 		props.put("article.lucene.directory", "/home/sergouniotis/Downloads/tpns/index");
 		props.put("cassandra.contact.point.address", "localhost");

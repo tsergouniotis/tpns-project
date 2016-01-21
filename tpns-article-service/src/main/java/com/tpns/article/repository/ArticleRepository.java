@@ -12,7 +12,7 @@ import com.tpns.article.domain.ArticleStatus;
 public interface ArticleRepository extends JpaRepository<Article, Long> {
 
 	@Query(name = "Article.findByStatus")
-	List<Article> findByStatus(@Param("status")ArticleStatus status);
+	List<Article> findByStatus(@Param("status") ArticleStatus status);
 
 	@Query(name = "Article.findByCategoryName")
 	List<Article> findByCategoryName(String categoryName);

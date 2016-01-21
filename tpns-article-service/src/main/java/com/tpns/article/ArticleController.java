@@ -2,11 +2,14 @@ package com.tpns.article;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -56,14 +59,14 @@ public class ArticleController {
 
 	@RequestMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE }, method = RequestMethod.PUT)
-	public ResponseEntity<Article> save(Article article) throws Exception {
+	public ResponseEntity<Article> save(@Valid @RequestBody Article article) throws Exception {
 		service.save(article);
 		return new ResponseEntity<Article>(article, HttpStatus.OK);
 	}
 
 	@RequestMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE }, method = RequestMethod.POST)
-	public ResponseEntity<Article> update(Article article) throws Exception {
+	public ResponseEntity<Article> update(@Valid @RequestBody Article article) throws Exception {
 		service.update(article.getId(), article);
 		return new ResponseEntity<Article>(article, HttpStatus.OK);
 	}

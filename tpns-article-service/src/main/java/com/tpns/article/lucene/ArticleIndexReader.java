@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
 import com.tpns.article.domain.Article;
 
 @Component
-@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class ArticleIndexReader {
 
 	@Autowired

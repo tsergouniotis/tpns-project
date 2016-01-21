@@ -24,7 +24,7 @@ public class ArticleManager {
 	@Autowired
 	private LuceneRepository luceneDAO;
 
-	public void save(@Valid Article article) throws BusinessException {
+	public void save(Article article) throws BusinessException {
 		final Article entity = articleDAO.save(article);
 		luceneDAO.save(entity);
 	}
