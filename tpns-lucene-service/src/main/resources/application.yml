@@ -1,0 +1,12 @@
+server:
+  port: 8082
+  contextPath: /lucene-service
+  
+logging:
+  level:
+    root: WARN
+    org.springframework.security: DEBUG
+
+cors:
+  allowed:
+    origins: http://localhost:8080

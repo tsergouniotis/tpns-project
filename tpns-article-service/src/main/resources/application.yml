@@ -1,7 +1,6 @@
 server:
   port: 8080
   contextPath: /article-service
-  
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/tpns
@@ -14,7 +13,3 @@ logging:
   level:
     root: WARN
     org.springframework.security: DEBUG
-
-cors:
-  allowed:
-    origins: http://localhost:8080

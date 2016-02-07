@@ -11,11 +11,8 @@
 		</persistence-unit-defaults>
 	</persistence-unit-metadata>
 
-	<entity class="com.tpns.user.domain.User">
+	<entity class="com.tpns.domain.user.User">
 		<table name="users" />
-		<named-query name="User.findByUsername">
-			<query>select u from User u where u.username=:username</query>
-		</named-query>
 		<attributes>
 			<id name="id" access="FIELD">
 				<column name="user_id" />
@@ -48,7 +45,7 @@
 
 
 
-	<embeddable class="com.tpns.user.domain.ContactInfo">
+	<embeddable class="com.tpns.domain.user.ContactInfo">
 		<attributes>
 			<basic name="phone">
 				<column name="phone" />
@@ -63,7 +60,7 @@
 		</attributes>
 	</embeddable>
 
-	<embeddable class="com.tpns.user.domain.Address">
+	<embeddable class="com.tpns.domain.user.Address">
 		<attributes>
 			<basic name="street">
 				<column name="street" />

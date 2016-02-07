@@ -1,0 +1,35 @@
+apply plugin: 'application'
+apply plugin: 'spring-boot'
+
+configurations{
+	testOutput
+}
+
+dependencies {
+	
+	compile("org.springframework.boot:spring-boot-starter-web")
+	
+	compile project(':tpns-utils')
+	compile project(':tpns-common')
+	compile project(':tpns-domain')
+	
+     compile libraries.lucene
+
+	
+	testOutput sourceSets.test.output + sourceSets.main.output
+	
+}
+
+sourceSets{
+	test{
+		resources.srcDir file('/src/main/resources')
+	}
+}
+
+jar {
+    archiveName = "tpns-lucene-service.jar"
+}
+
+applicationDefaultJvmArgs = [
+    "-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5007"
+]

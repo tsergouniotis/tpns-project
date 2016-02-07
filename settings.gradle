@@ -2,6 +2,8 @@ rootProject.name = "tpns"
 
 include 'tpns-utils'
 include 'tpns-common'
-include 'tpns-spec'
+include 'tpns-domain'
 include 'tpns-article-service'
+include 'tpns-lucene-service'
+include 'tpns-cassandra-service'
 include 'tpns-user-service'

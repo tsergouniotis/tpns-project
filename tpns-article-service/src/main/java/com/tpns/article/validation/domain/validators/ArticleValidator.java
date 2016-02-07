@@ -1,17 +1,18 @@
 package com.tpns.article.validation.domain.validators;
 
-import javax.ejb.EJB;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import com.tpns.article.domain.Article;
-import com.tpns.article.domain.Category;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.tpns.article.repository.CategoryRepository;
 import com.tpns.article.validation.domain.constraints.ValidArticle;
+import com.tpns.domain.article.Article;
+import com.tpns.domain.article.Category;
 
 public class ArticleValidator implements ConstraintValidator<ValidArticle, Article> {
 
-	@EJB
+	@Autowired
 	private CategoryRepository categoryDAO;
 
 	@Override
@@ -25,7 +26,7 @@ public class ArticleValidator implements ConstraintValidator<ValidArticle, Artic
 		}
 		final Category category = article.getCategory();
 		if (Category.hasValue(category)) {
-			final Category persistent = categoryDAO.find(category.getName());
+			final Category persistent = categoryDAO.findByName(category.getName());
 			if (null == persistent) {
 				context.disableDefaultConstraintViolation();
 				context.buildConstraintViolationWithTemplate(context.getDefaultConstraintMessageTemplate()).addPropertyNode("category").addConstraintViolation();

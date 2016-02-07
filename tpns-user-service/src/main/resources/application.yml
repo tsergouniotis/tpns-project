@@ -8,3 +8,8 @@ spring:
     username: tpns
     password: tpns
     driver-class-name: org.postgresql.Driver
+    
+logging:
+  level:
+    root: WARN
+    org.springframework.security: DEBUG

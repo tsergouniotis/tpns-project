@@ -1,6 +1,6 @@
 package com.tpns.article.repository;
 
-import com.tpns.article.domain.Article;
+import com.tpns.domain.article.Article;
 import com.tpns.utils.CalendarUtils;
 
 public class ArticleListener {

@@ -12,14 +12,8 @@
 	</persistence-unit-metadata>
 
 
-	<entity class="com.tpns.article.domain.Article" name="Article" cacheable="true">
+	<entity class="com.tpns.domain.article.Article" name="Article" cacheable="true">
 		<table name="articles" />
-		<named-query name="Article.findByStatus">
-			<query>select a from Article a where a.status=:status</query>
-		</named-query>
-		<named-query name="Article.findByCategoryName">
-			<query>select a from Article a join fetch a.category cat where cat.name=:categoryName</query>
-		</named-query>
 		<entity-listeners>
 			<entity-listener class="com.tpns.article.repository.ArticleListener">
 				<pre-persist method-name="prePersist" />
@@ -85,7 +79,7 @@
 		</attributes>
 	</entity>
 	
-	<entity class="com.tpns.article.domain.MediaResource" cacheable="true">
+	<entity class="com.tpns.domain.article.MediaResource" cacheable="true">
 		<table name="resources"/>
 		<attributes>
 			<id name="id" access="FIELD">
@@ -103,7 +97,7 @@
 		</attributes>
 	</entity>	
 
-	<entity class="com.tpns.article.domain.Keyword">
+	<entity class="com.tpns.domain.article.Keyword">
 		<table name="keywords" />
 		<attributes>
 			<id name="key" access="FIELD">
@@ -118,11 +112,8 @@
 		</attributes>
 	</entity>
 
-	<entity class="com.tpns.article.domain.Category" name="Category">
+	<entity class="com.tpns.domain.article.Category" name="Category">
 		<table name="categories" />
-		<named-query name="Category.findByName">
-			<query>select c from Category c where c.name=:name</query>
-		</named-query>
 		<attributes>
 			<id name="id" access="FIELD">
 				<column name="category_id" updatable="false" />
@@ -155,7 +146,7 @@
 		</attributes>
 	</entity>
 
-	<entity class="com.tpns.article.domain.ApplicationParameter" cacheable="true">
+	<entity class="com.tpns.domain.article.ApplicationParameter" cacheable="true">
 		<table name="application_parameters" />
 		<named-query name="ApplicationParameter.findByKey">
 			<query>SELECT param.value from ApplicationParameter param where param.key=:key</query>
@@ -170,7 +161,7 @@
 		</attributes>
 	</entity>
 
-	<entity class="com.tpns.article.domain.Audit">
+	<entity class="com.tpns.domain.article.Audit">
 		<table name="audit" />
 		<attributes>
 			<id name="id" access="FIELD">

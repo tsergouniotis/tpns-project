@@ -3,7 +3,7 @@
 	xmlns="http://jboss.org/xml/ns/javax/validation/mapping" version="1.1">
 
 
-	<bean class="com.tpns.article.domain.Article" ignore-annotations="true">
+	<bean class="com.tpns.domain.article.Article" ignore-annotations="true">
 		<class>
 			<constraint annotation="com.tpns.article.validation.domain.constraints.ValidArticle" />
 		</class>
@@ -25,7 +25,7 @@
 		</field>
 	</bean>
 
-	<bean class="com.tpns.article.domain.Category" ignore-annotations="true">
+	<bean class="com.tpns.domain.article.Category" ignore-annotations="true">
 		<field name="name">
 			<constraint annotation="javax.validation.constraints.NotNull" />
 			<constraint annotation="javax.validation.constraints.Size">
@@ -36,7 +36,7 @@
 		</field>
 	</bean>
 
-	<bean class="com.tpns.article.domain.MediaResource"
+	<bean class="com.tpns.domain.article.MediaResource"
 		ignore-annotations="true">
 		<field name="url">
 			<constraint annotation="javax.validation.constraints.NotNull" />

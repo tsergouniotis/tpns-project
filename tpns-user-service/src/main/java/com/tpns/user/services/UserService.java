@@ -5,7 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tpns.user.domain.User;
+import com.tpns.domain.user.User;
 import com.tpns.user.repository.UserRepository;
 import com.tpns.utils.Assert;
 

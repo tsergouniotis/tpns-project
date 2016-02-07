@@ -8,11 +8,13 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Component;
 
-import com.tpns.article.domain.Article;
-import com.tpns.article.domain.MediaResource;
-import com.tpns.article.domain.MediaResourceType;
+import com.tpns.domain.article.Article;
+import com.tpns.domain.article.MediaResource;
+import com.tpns.domain.article.MediaResourceType;
 
+@Component("news24")
 public class News24Parser implements Parser {
 
 	public static final String INDEX = "http://www.news247.gr";

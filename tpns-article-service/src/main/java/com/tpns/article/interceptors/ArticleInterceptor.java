@@ -15,16 +15,16 @@ import org.aspectj.lang.annotation.Aspect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.tpns.common.domain.errors.BusinessError;
-import com.tpns.common.domain.errors.BusinessErrorCode;
-import com.tpns.common.domain.errors.BusinessException;
+import com.tpns.domain.errors.BusinessError;
+import com.tpns.domain.errors.BusinessErrorCode;
+import com.tpns.domain.errors.BusinessException;
 
 @Aspect
 public class ArticleInterceptor {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ArticleInterceptor.class);
 
-	@Around("execution(* com.tpns.article.managers.*.*(..))")
+	@Around("execution(* com.tpns.article.services.*.*(..))")
 	public Object proceed(ProceedingJoinPoint jp) throws Exception {
 
 		try {
