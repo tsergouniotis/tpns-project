@@ -10,3 +10,6 @@ docker build -t pzografos/tpns-database .
 docker run --net=tpns_nw -itd --name=tpnsappserver --link tpnsdatabase:postgres -p 127.0.0.1:8080:8080 pzografos/tpns-appserver
 docker build -t pzografos/tpns-appserver .
 
+# WEB SERVER
+docker run --net=tpns_nw -itd --name=tpnswebserver -p 80:80 pzografos/tpns-webserver
+docker build -t pzografos/tpns-webserver .
