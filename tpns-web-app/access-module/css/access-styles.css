@@ -1,0 +1,157 @@
+/* CSS Document */
+/*   
+Theme Name: TPNS
+Description: Global Information Distibrution Network
+Author: Handmade Solutions for TPNS
+Author URI: http://www.handmadesolutions.net/ for tpns.com
+Version: 1.0
+*/
+
+body { background:#2b3643; font-size:16px; font-family:OpenSans-Regular, "Trebuchet MS", Arial, Helvetica, sans-serif; font-weight:normal; text-rendering:optimizelegibility; color:#c6cfda; -webkit-touch-callout:none; -webkit-text-size-adjust:none; -webkit-user-select:none; -webkit-highlight:none; -webkit-tap-highlight-color:rgba(0,0,0,0); user-select:none; overflow-x:hidden; }
+
+.page-wrap { max-width:700px; padding:4%; margin:0px auto; }
+_:-ms-fullscreen, :root .page-wrap { overflow-y:hidden; }
+
+a { color:#3598dc; }
+a:hover { color:#c6cfda; }
+
+p { line-height:120%; padding-top:0.7%; padding-bottom:0.7%; margin:0px; }
+
+::-moz-selection{ background:#435060; color:#c6cfda; text-shadow:none; }
+::selection { background:#435060; color:#c6cfda; text-shadow:none; } 
+
+a:link { -webkit-tap-highlight-color:#435060; } 
+
+ins { background-color:#364150; color:#c6cfda; text-decoration: none; }
+mark { background-color:#364150; color:#c6cfda; font-style: italic; font-weight: bold; }
+
+/* --------------------- Access Container ---------------------- */
+.access-outer-container {
+	padding:12% 0% 0%;
+}
+.access-inner-container {
+	min-height:280px; max-width:320px; background:#364150; padding:40px; margin:20px auto; -webkit-border-radius:10px; border-radius:10px; border:1px solid #435060;
+}
+.access-inner-back-container, .access-help-input-title {
+	padding-bottom:3%;
+}
+.access-inner-back-container [class^="tpns-ai-arrow-left"]:before, .access-inner-back-container [class*=" tpns-ai-arrow-left"]:before {
+	padding-left:0px;
+}
+.user-avatar img, .success-avatar img {
+	background:#435060; width:100px; height:100px; -webkit-border-radius:50%; border-radius:50%;
+}
+.success-avatar {
+	margin-bottom:5%;
+}
+.access-help-input-descriptor {
+	padding-top:6%;
+}
+.success-message-other p, .success-message-pw-un p {
+	padding:2% 0%;
+}
+
+/* -------------------------- Local Submit Button/Link --------------------------- */
+.access-form-submit-container {
+	margin:5% 0% 3%;
+}
+.help-submit-success-button-container {
+	margin-top:14%;
+}
+
+/* -------------------------- Local Checkbox --------------------------- */
+.access-checkbox {
+	padding-top:10px;
+}
+.access-checkbox label {
+	color:#c6cfda;
+}
+.access-checkbox label:hover, .access-checkbox input[type=checkbox]:checked + span.global-checkbox-item-label {
+	color:#26c281;
+}
+.access-checkbox label span.global-checkbox-item-label:before {
+	background:url(../../global-module/global-images/checkbox-unchecked-pale-grey.png) no-repeat 50%;
+}
+
+/* ------------------- Access Help Accordian type Radio ------------------- */
+.access-help-radio-checkbox input[type=radio] {
+	display: none;
+}
+.access-help-radio-checkbox label {
+	display: inline-block; width: 100%; vertical-align: middle; padding: 0; margin: 0;
+}
+.access-help-radio-checkbox label p.access-help-radio-item-label:hover {
+	color: #26c281;
+}
+.access-help-radio-checkbox input[type=radio]:checked ~ p.access-help-radio-item-label {
+	color: #FFFFFF;
+}
+.access-help-radio-checkbox label p.access-help-radio-item-label {
+	display: inline-block; width: 94%; color: #c6cfda; line-height: 18px; vertical-align: middle; padding: 3%; margin: 0; border-top: 1px dotted #C6CFDA; cursor: pointer;
+}
+.access-help-radio-checkbox:first-child label p.access-help-radio-item-label {
+	border: none;
+}
+.access-help-radio-checkbox label p.access-help-radio-item-label i[class^="tpns-ai-add"]:before, .access-help-radio-checkbox label p.access-help-radio-item-label i[class*=" tpns-ai-add"]:before {
+	float: right; font-size:140%; color: #3598dc;
+}
+.access-help-radio-checkbox label p.access-help-radio-item-label:hover i[class^="tpns-ai-add"]:before, .access-help-radio-checkbox label:hover p.access-help-radio-item-label i[class*=" tpns-ai-add"]:before {
+	color: #26c281;
+}
+.access-help-radio-checkbox input[type=radio] + p.access-help-radio-item-label i[class^="tpns-ai-add"]:before, .access-help-radio-checkbox input[type=radio] + p.access-help-radio-item-label i[class*=" tpns-ai-add"]:before {
+	-webkit-transition: 0.5s ease-in-out; -moz-transition: 0.5s ease-in-out; -o-transition: 0.5s ease-in-out; transition: 0.5s ease-in-out;
+}
+.access-help-radio-checkbox input[type=radio]:checked + p.access-help-radio-item-label i[class^="tpns-ai-add"]:before, .access-help-radio-checkbox input[type=radio]:checked + p.access-help-radio-item-label i[class*=" tpns-ai-add"]:before {
+    color: #26c281; -webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -o-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg);
+}
+.access-help-radio-checkbox label input[type=radio] ~ h6.access-help-radio-content {
+	max-height:0px; overflow:hidden;
+}
+.access-help-radio-checkbox label input[type=radio]:checked ~ h6.access-help-radio-content {
+	  max-height: 1000px; padding: 3% 3% 6% 3%; margin: 0; -webkit-transition: max-height 0.5s ease-in-out; -moz-transition: max-height 0.5s ease-in-out; -o-transition: max-height 0.5s ease-in-out; -ms-transition: max-height 0.5s ease-in-out; transition: max-height 0.5s ease-in-out;
+}
+.access-help-radio-checkbox label h6.access-help-radio-content {
+	font-size: 0.875em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --------------------- Distribution List Container ---------------------- */
+.distribution-list-outer-container ul li {
+	display:inline-block;
+}
+
+
+/* Media queries!
+-------------------------------------------------------------------------------*/
+
+/* ----- Mobile and Tablet Views ----- */
+@media handheld, only screen and (max-width: 768px) {
+	body { font-size:16px; }
+}
+@media handheld, only screen and (max-width: 750px) {
+	body { font-size:15px; }
+}
+@media handheld, only screen and (max-width: 600px) {
+	body { font-size:14px; }
+}
+@media handheld, only screen and (max-width: 500px) {
+	h1.tpns-logo { font-size:140%; }
+	.access-outer-container { padding:6% 0% 0%; }
+	.access-inner-container { padding:20px; }
+}
+@media handheld, only screen and (max-width: 315px) {
+	body { font-size:12px; }
+}
+
+

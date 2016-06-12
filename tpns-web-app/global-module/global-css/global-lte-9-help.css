@@ -1,0 +1,27 @@
+/* CSS Document */
+/*   
+Theme Name: TPNS
+Description: Global Information Distibrution Network
+Author: Handmade Solutions for TPNS
+Author URI: http://www.handmadesolutions.net/ for tpns.com
+Version: 1.0
+*/
+
+.page-wrap {display:none;}
+body {display:block;}
+* {margin:0 0 0 0; padding:0 0 0 0;}
+body { background:#2b3643; margin:0; padding:60px 15px; color:#96A6AD; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; }
+div.dialog { background:#364150; width:860px; margin:0 auto; -webkit-border-radius:8px; -moz-border-radius: 8px; border-radius:8px; -webkit-box-shadow:0 0 1px #435060; -moz-box-shadow:0 0 1px #435060; box-shadow:0 0 1px #435060; border:1px solid #435060; }
+body:first-of-type div.dialog { border: none; }
+div.header { margin-top:-60px; padding-top:200px; background:transparent url(../global-images/browser-help.png) no-repeat scroll center top; }
+div.innercol { padding:20px 40px 20px 40px; }
+div.footer { margin-top:50px; }
+h1, h2, h3, h4, h5 { margin:0; }
+h1 { font-weight:lighter; color:#c6cfda; font-size:24px; line-height:28px; letter-spacing:1px; margin-bottom:10px; text-align:center; }
+h1 a img { border:0px solid #c6cfda; }
+h2 { font-weight:normal; font-size:18px; line-height:21px; margin:0; }
+h5 { font-size:16px; font-weight:normal; margin:0; margin-top:20px; }
+p { font-size:14px; line-height:21px; margin:0; }
+a, a:link, a:visited { text-decoration:none; color:#9AADEB; }
+a:hover, a:visited:hover { text-decoration:underline; }
+ol li { position:relative; max-width:780px; list-style-type:decimal; font-size:14px; padding:5px 20px; margin-left:40px; }

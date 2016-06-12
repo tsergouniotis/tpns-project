@@ -1,0 +1,501 @@
+/* CSS Document */
+/*   
+Theme Name: TPNS
+Description: Global Information Distibrution Network
+Author: Handmade Solutions for TPNS
+Author URI: http://www.handmadesolutions.net/ for tpns.com
+Version: 1.0
+*/
+
+/* Reset Default Browser Styles */
+html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, hgroup, menu, nav, section, time, mark, audio, video {
+	margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; background: transparent; font-weight: normal;
+}									
+
+article, aside, figure, footer, header, hgroup, nav, section { display: block; }
+
+img, object, embed { max-width: 100%; }
+
+html { overflow-x: hidden; overflow-y: scroll; }
+
+ol, ul, li { font-size: 100%; margin: 0; padding: 0; border: 0; list-style: none; }
+
+a { background: transparent; font-size: 100%; text-decoration: none; margin: 0; padding: 0;}
+
+del { text-decoration: line-through; }
+
+abbr[title], dfn[title] { border-bottom: 1px dotted #000; cursor: help; }
+
+input, select { vertical-align: middle; }
+
+pre { white-space: pre-line; }
+
+input[type="radio"] { vertical-align: middle; }
+input[type="checkbox"] { vertical-align: middle; }
+
+select, input, textarea { font-size: inherit; font: 100%; }
+
+table { font-size: inherit; font: 100%; }
+
+a:hover, a:active { outline: none; }
+
+/* SUP - Superscript, SUB - Subscript */
+sub, sup { font-size: 60%; line-height: 0; position: relative; }
+sup { top: 0em; vertical-align: super; }
+sub { bottom: -0.25em; vertical-align: sub; }
+
+.clickable, input[type=button], input[type=submit], button { -webkit-appearance: none; cursor: pointer; }
+
+button, input, select, textarea { margin: 0; }
+
+button { width: auto; overflow: visible; }
+
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }  
+.clearfix:after { clear: both; }  
+.clearfix { zoom: 1; }  
+
+
+/* --------------------- Ok, this is where the fun starts. --------------------- */
+.hidden { display: none; }
+
+/* --------------------- global-fonts ---------------------- */
+@font-face {
+    font-family:'OpenSans-Regular';
+    src: url('../global-fonts/OpenSans-Regular.eot');
+    src: url('../global-fonts/OpenSans-Regular.eot?#iefix') format('embedded-opentype'),
+url('../global-fonts/OpenSans-Regular.svg#OpenSans-Regular') format('svg'),
+url('../global-fonts/OpenSans-Regular.woff') format('woff'),
+url('../global-fonts/OpenSans-Regular.ttf') format('truetype');
+    font-weight: normal; font-style: normal; -webkit-font-smoothing: antialiased; text-rendering: optimizelegibility;
+}
+@font-face {
+    font-family:'OpenSans-Italic';
+    src: url('../global-fonts/OpenSans-Italic.eot');
+    src: url('../global-fonts/OpenSans-Italic.eot?#iefix') format('embedded-opentype'),
+url('../global-fonts/OpenSans-Italic.svg#OpenSans-Italic') format('svg'),
+url('../global-fonts/OpenSans-Italic.woff') format('woff'),
+url('../global-fonts/OpenSans-Italic.ttf') format('truetype');
+    font-weight: normal; font-style: normal; -webkit-font-smoothing: antialiased; text-rendering: optimizelegibility;
+}
+@font-face {
+    font-family:'OpenSans-Bold';
+    src: url('../global-fonts/OpenSans-Bold.eot');
+    src: url('../global-fonts/OpenSans-Bold.eot?#iefix') format('embedded-opentype'),
+url('../global-fonts/OpenSans-Bold.svg#OpenSans-Bold') format('svg'),
+url('../global-fonts/OpenSans-Bold.woff') format('woff'),
+url('../global-fonts/OpenSans-Bold.ttf') format('truetype');
+    font-weight: normal; font-style: normal; -webkit-font-smoothing: antialiased; text-rendering: optimizelegibility;
+}
+@font-face {
+    font-family:'OpenSans-BoldItalic';
+    src: url('../global-fonts/OpenSans-BoldItalic.eot');
+    src: url('../global-fonts/OpenSans-BoldItalic.eot?#iefix') format('embedded-opentype'),
+url('../global-fonts/OpenSans-BoldItalic.svg#OpenSans-BoldItalic') format('svg'),
+url('../global-fonts/OpenSans-BoldItalic.woff') format('woff'),
+url('../global-fonts/OpenSans-BoldItalic.ttf') format('truetype');
+    font-weight: normal; font-style: normal; -webkit-font-smoothing: antialiased; text-rendering: optimizelegibility;
+}
+@font-face {
+    font-family:'OpenSans-Light';
+    src: url('../global-fonts/OpenSans-Light.eot');
+    src: url('../global-fonts/OpenSans-Light.eot?#iefix') format('embedded-opentype'),
+url('../global-fonts/OpenSans-Light.svg#OpenSans-Light') format('svg'),
+url('../global-fonts/OpenSans-Light.woff') format('woff'),
+url('../global-fonts/OpenSans-Light.ttf') format('truetype');
+    font-weight: normal; font-style: normal; -webkit-font-smoothing: antialiased; text-rendering: optimizelegibility;
+}
+@font-face {
+    font-family:'OpenSansLight-Italic';
+    src: url('../global-fonts/OpenSansLight-Italic.eot');
+    src: url('../global-fonts/OpenSansLight-Italic.eot?#iefix') format('embedded-opentype'),
+url('../global-fonts/OpenSansLight-Italic.svg#OpenSansLight-Italic') format('svg'),
+url('../global-fonts/OpenSansLight-Italic.woff') format('woff'),
+url('../global-fonts/OpenSansLight-Italic.ttf') format('truetype');
+    font-weight: normal; font-style: normal; -webkit-font-smoothing: antialiased; text-rendering: optimizelegibility;
+}
+
+/* --------------------- global custom TPNS Newspapers Type fonts ---------------------- */
+@font-face {
+  font-family: "tpns-newspapers-type-icons";
+  src: url("../global-fonts/tpns-newspapers-type-icons.eot");
+  src: url("../global-fonts/tpns-newspapers-type-icons.eot?#iefix") format("embedded-opentype"),
+url("../global-fonts/tpns-newspapers-type-icons.woff") format("woff"),
+url("../global-fonts/tpns-newspapers-type-icons.ttf") format("truetype"),
+url("../global-fonts/tpns-newspapers-type-icons.svg#tpns-newspapers-type-icons") format("svg");
+  font-weight: normal; font-style: normal; -webkit-font-smoothing: antialiased; text-rendering: optimizelegibility;
+}
+[class^="tpns-nti-"]:before, [class*=" tpns-nti-"]:before {
+  font-family: "tpns-newspapers-type-icons" !important; font-style: normal !important; font-weight: normal !important; font-variant: normal !important; text-transform: none !important; speak: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; padding: 0px 5px; vertical-align: middle;
+}
+.tpns-nti-astrology-website:before { content: "\61"; }
+.tpns-nti-lifestyle-website:before { content: "\62"; }
+.tpns-nti-news-website:before { content: "\63"; }
+.tpns-nti-sports-website:before { content: "\64"; }
+
+/* --------------------- global custom TPNS fonts ---------------------- */
+@font-face {
+  font-family: "tpns-admin-icons";
+  src: url("../global-fonts/tpns-admin-icons.eot");
+  src: url("../global-fonts/tpns-admin-icons.eot?#iefix") format("embedded-opentype"),
+url("../global-fonts/tpns-admin-icons.woff") format("woff"),
+url("../global-fonts/tpns-admin-icons.ttf") format("truetype"),
+url("../global-fonts/tpns-admin-icons.svg#tpns-admin-icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="tpns-ai-"]:before, [class*=" tpns-ai-"]:before {
+  font-family: "tpns-admin-icons" !important; font-style: normal !important; font-weight: normal !important; font-variant: normal !important; text-transform: none !important; speak: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; padding: 0px 5px; vertical-align: middle;
+}
+.tpns-ai-add:before { content: "\61"; }
+.tpns-ai-add-user:before { content: "\62"; }
+.tpns-ai-android:before { content: "\63"; }
+.tpns-ai-apple:before { content: "\64"; }
+.tpns-ai-calendar-month:before { content: "\65"; }
+.tpns-ai-calendar-month-number:before { content: "\66"; }
+.tpns-ai-checked:before { content: "\67"; }
+.tpns-ai-chrome-pc:before { content: "\68"; }
+.tpns-ai-clock:before { content: "\69"; }
+.tpns-ai-close:before { content: "\6a"; }
+.tpns-ai-csv:before { content: "\6b"; }
+.tpns-ai-edit:before { content: "\6c"; }
+.tpns-ai-email-closed:before { content: "\6d"; }
+.tpns-ai-manage-accounts:before { content: "\6e"; }
+.tpns-ai-manage-account:before { content: "\6f"; }
+.tpns-ai-locked:before { content: "\70"; }
+.tpns-ai-internet-more:before { content: "\71"; }
+.tpns-ai-image:before { content: "\72"; }
+.tpns-ai-ie-pc:before { content: "\73"; }
+.tpns-ai-ie-mobile:before { content: "\74"; }
+.tpns-ai-home:before { content: "\75"; }
+.tpns-ai-firefox-pc:before { content: "\76"; }
+.tpns-ai-favourite-active:before { content: "\77"; }
+.tpns-ai-favourite:before { content: "\78"; }
+.tpns-ai-excel:before { content: "\79"; }
+.tpns-ai-email-open:before { content: "\7a"; }
+.tpns-ai-notifications:before { content: "\41"; }
+.tpns-ai-opera-pc:before { content: "\42"; }
+.tpns-ai-pause:before { content: "\43"; }
+.tpns-ai-pdf:before { content: "\44"; }
+.tpns-ai-power-button:before { content: "\45"; }
+.tpns-ai-refresh:before { content: "\46"; }
+.tpns-ai-remove-user:before { content: "\47"; }
+.tpns-ai-safari-pc:before { content: "\48"; }
+.tpns-ai-selected:before { content: "\49"; }
+.tpns-ai-settings-slides:before { content: "\4a"; }
+.tpns-ai-thumbs-down:before { content: "\4b"; }
+.tpns-ai-thumbs-up:before { content: "\4c"; }
+.tpns-ai-unchecked:before { content: "\4d"; }
+.tpns-ai-undo:before { content: "\4e"; }
+.tpns-ai-unlocked:before { content: "\4f"; }
+.tpns-ai-user:before { content: "\50"; }
+.tpns-ai-arrow-down:before { content: "\51"; }
+.tpns-ai-arrow-left:before { content: "\52"; }
+.tpns-ai-arrow-right:before { content: "\53"; }
+.tpns-ai-arrow-up:before { content: "\54"; }
+
+/* --------------------- Headers ---------------------- */
+h1 {
+	font-family: OpenSans-Light, "Trebuchet MS", Arial, Helvetica, sans-serif; font-size: 2.250em; /* Equivalent to 36px */
+}
+h2 {
+	font-family: OpenSans-Light, "Trebuchet MS", Arial, Helvetica, sans-serif; font-size: 1.875em; /* Equivalent to 30px */
+}
+h3 {
+	font-family: OpenSans-Light, "Trebuchet MS", Arial, Helvetica, sans-serif; font-size: 1.500em; /* Equivalent to 24px */
+}
+h4 {
+	font-family: OpenSans-Light, "Trebuchet MS", Arial, Helvetica, sans-serif; font-size: 1.375em; /* Equivalent to 22px */
+}
+h5 {
+	font-family: OpenSans-Light, "Trebuchet MS", Arial, Helvetica, sans-serif; font-size: 1.125em; /* Equivalent to 18px */
+}
+p {
+	font-family: OpenSans-Light, "Trebuchet MS", Arial, Helvetica, sans-serif; font-size: 1em; /* Equivalent to 16px */
+}
+h6 {
+	font-family: OpenSans-Light, "Trebuchet MS", Arial, Helvetica, sans-serif; font-size: 0.875em; /* Equivalent to 14px */
+}
+small {
+	font-family: OpenSans-Light, "Trebuchet MS", Arial, Helvetica, sans-serif; font-size: 0.750em; /* Equivalent to 12px */
+}
+
+/* --------------------- Font Controls ---------------------- */
+/* ----- Use to make your text BOLD ----- */
+strong, .textb {
+	font-family: OpenSans-Bold, "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+/* ----- Use to make your text ITALICS ----- */
+em, .texti, .global-textfield input, .global-textfield textarea {
+	font-family: OpenSansLight-Italic, "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+/* ----- Use to CENTER your text ----- */
+.textc {
+	text-align: center;
+}
+/* ----- Use to RIGHT ALIGN your text ----- */
+.textr {
+	text-align: right;
+}
+/* ----- Use to LEFT ALIGN your text ----- */
+.textl {
+	text-align: left;
+}
+/* ----- Use to transform ALL your text to CAPITAL LETTERS ----- */
+.textup {
+	text-transform: uppercase;
+}
+/* ----- Use to UNDERLINE your text ----- */
+.textu {
+	text-decoration: underline;
+}
+/* ----- Use to STRIKE THROUGH your text so it appears as deleted/changed ----- */
+.texts {
+	text-decoration: line-through;
+}
+
+/* --------------------- Single/Special use global-fonts --------------------- */
+/* Special Use global-fonts normally do not have a font-size and start with a class of .text100 as it is inherited by the header font size, if they do have a font-size then the class starts from .text200 upwards */
+.text100, button.global-form-submit-button {
+	font-family: OpenSans-Regular, "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+/*
+.text200 {
+	font-family: OpenSans-Extrabold, "Trebuchet MS", Arial, Helvetica, sans-serif; font-size: 3.125em;
+}
+*/
+
+/* ------------------ CSS Shorthand Explaination ------------------ */
+/* ------    padding:5% 2% 3% 1%; or margin:5% 2% 3% 1%;     ------ */
+/* ------    The four sides are in the following order...    ------ */
+/* ------    padding: or margin: TOP, RIGHT, BOTTOM, LEFT    ------ */
+/* ---------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------- */
+/* ---------------------------- Forms ----------------------------- */
+/* ---------------------------------------------------------------- */
+/* -------------------------- TextField --------------------------- */
+/* ---------------------------------------------------------------- */
+/* ------------------ Validation Types Explained ------------------ */
+/* ---------------------------------------------------------------- */
+/* :valid and :invalid                                              */
+/* explicitly sets the style for an element when the input is       */
+/* valid/invalid.                                                   */
+/* :required and :optional                                          */
+/* sets the style for elements that are required or optional.       */
+/* :in-range and :out-of-range                                      */
+/* styling for elements that support the min and max attribute.     */
+/* ---------------------------------------------------------------- */
+.global-textfield, .google-recaptcha { 
+	position: relative; padding: 0; margin: 20px 0px 40px 0px;
+}
+.global-textfield input, .global-textfield textarea {
+	display: block; width: -webkit-calc(100% - 15px); width: -moz-calc(100% - 15px); width: calc(100% - 15px); background: transparent; color: #C6CFDA; font-size: 1.125em; padding: 10px 10px 10px 5px; border: none; border-bottom: 1px dotted #C6CFDA; outline:none; -webkit-appearance:none; -moz-appearance:none; appearance:none;
+}
+.global-textfield textarea {
+	overflow-y:auto; resize:none;
+}
+.global-textfield input[readonly] {
+	display: block; width:100%; background: transparent; color: #C6CFDA; text-align:center; font-size: 1.125em; padding: 10px 0px 0px 0px; border: none; outline:none; -webkit-appearance:none; -moz-appearance:none; appearance:none;
+}
+.global-textfield input:valid, .global-textfield textarea:valid {
+	border-bottom: 1px dotted #26c281;
+}
+.global-textfield input:focus, .global-textfield textarea:focus { 
+	outline: none;
+}
+.global-textfield label {
+	position: absolute; left: 5px; top: 10px; color: #C6CFDA; font-family: OpenSans-Light, "Trebuchet MS", Arial, Helvetica, sans-serif; font-size: 1.125em; transition: 0.2s ease all; -moz-transition: 0.2s ease all; -webkit-transition: 0.2s ease all; pointer-events: none;
+}
+.global-textfield input:focus ~ label, .global-textfield input:valid ~ label, .global-textfield textarea:focus ~ label, .global-textfield textarea:valid ~ label {
+	top: -20px; font-size: 0.875em; color: #3598dc; border: none;
+}
+.global-textfield input:valid ~ label, .global-textfield input:valid + .bar:before, .global-textfield input:valid + .bar:after, .global-textfield textarea:valid ~ label, .global-textfield textarea:valid + .bar:before, .global-textfield textarea:valid + .bar:after {
+	color: #26c281;
+}
+.global-textfield input:invalid ~ label, .global-textfield textarea:invalid ~ label {
+	background: #364150;
+}
+.global-textfield input:invalid:focus ~ label, .global-textfield textarea:invalid:focus ~ label {
+	background: transparent;
+}
+.bar {
+	position: relative; display: block; width: 100%;
+}
+.bar:before, .bar:after {
+	content: ''; position: absolute; height: 2px; width: 0; bottom: 0px; background: #3598dc; transition: 0.2s ease all; -moz-transition: 0.2s ease all; -webkit-transition: 0.2s ease all;
+}
+.global-textfield input:valid + .bar:before, .global-textfield input:valid + .bar:after, .global-textfield textarea:valid + .bar:before, .global-textfield textarea:valid + .bar:after {
+	background: #26c281;
+}
+.bar:before {
+	left: 50%;
+}
+.bar:after {
+	right: 50%; 
+}
+.global-textfield input:focus ~ .bar:before, .global-textfield input:focus ~ .bar:after, .global-textfield textarea:focus ~ .bar:before, .global-textfield textarea:focus ~ .bar:after {
+	width: 50%;
+}
+
+/* -------------------------- Button --------------------------- */
+button.global-form-submit-button, h5.global-form-submit-button a {
+	display: inline-block; min-width: 64px; width: 100%; height: 40px; line-height: 40px; background: #3598dc; font-size: 1.125em; color: #FFFFFF; border:0; -webkit-border-radius: 8px; border-radius: 8px; transition: background-color 0.5s ease;
+}
+button.global-form-submit-button:hover, h5.global-form-submit-button a:hover {
+	background: #26c281;
+}
+
+/* -------------------------- Global Checkbox --------------------------- */
+.global-checkbox input[type=checkbox] {
+	display: none;
+}
+.global-checkbox label {
+	display: inline-block; vertical-align: middle; cursor: pointer; 
+}
+.global-checkbox label span.global-checkbox-item-label:before {
+	content: ""; display: inline-block; width: 18px; height: 18px; background: url(../global-images/checkbox-unchecked.png) no-repeat 50%; line-height: 18px; vertical-align: middle; padding: 0; margin: 0px 9px 0px 0px;
+}
+.global-checkbox input[type=checkbox]:checked + span.global-checkbox-item-label:before {
+    background: url(../global-images/checkbox-checked.png) no-repeat 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -------------------------- CSS Tabular Look --------------------------- */
+.global-table {
+	display:table; table-layout:fixed; width:100%; padding:0; margin:0;
+}
+.global-table-row {
+	display:table-row; width:100%; padding:0; margin:0;
+}
+.global-table-cell {
+	display:table-cell; vertical-align:middle; padding:0; margin:0;
+}
+
+/* ------------------------ Add to Home Screen ------------------------ */
+.ath-viewport * {
+	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;
+}
+.ath-viewport {
+	position: relative; z-index: 2147483641; pointer-events: none; -webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-touch-callout: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-text-size-adjust: none; -moz-text-size-adjust: none; -ms-text-size-adjust: none; -o-text-size-adjust: none; text-size-adjust: none;
+}
+.ath-modal {
+	pointer-events: auto !important; background: rgba(0,0,0,0.6);
+}
+.ath-mandatory {
+	background: #000;
+}
+.ath-container {
+	pointer-events: auto !important; position: absolute; z-index: 2147483641; padding: 0.7em 0.6em; width: 18em; background: #eee; background-size: 100% auto; box-shadow: 0 0.2em 0 #d1d1d1; font-family: sans-serif; font-size: 15px; line-height: 1.5em; text-align: center;
+}
+.ath-container small {
+	font-size: 0.8em; line-height: 1.3em; display: block; margin-top: 0.5em;
+}
+.ath-ios.ath-phone {
+	bottom: 1.8em; left: 50%; margin-left: -9em;
+}
+.ath-ios6.ath-tablet {
+	left: 5em; top: 1.8em;
+}
+.ath-ios7.ath-tablet {
+	left: 0.7em; top: 1.8em;
+}
+.ath-ios8.ath-tablet, .ath-ios9.ath-tablet{
+	right: 0.4em; top: 1.8em;
+}
+.ath-android {
+	bottom: 1.8em; left: 50%; margin-left: -9em;
+}
+/* close icon */
+.ath-container:before {
+	content: ''; position: relative; display: block; float: right; margin: -0.7em -0.6em 0 0.5em; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAMAAABmmnOVAAAAdVBMVEUAAAA5OTkzMzM7Ozs3NzdBQUFAQEA/Pz8+Pj5BQUFAQEA/Pz8+Pj5BQUFAQEA/Pz9BQUE+Pj4/Pz8/Pz8+Pj4/Pz8/Pz8/Pz8+Pj4/Pz8+Pj4/Pz8/Pz8/Pz8/Pz8/Pz8+Pj4/Pz8/Pz8/Pz8/Pz9AQEA/Pz+fdCaPAAAAJnRSTlMACQoNDjM4OTo7PEFCQ0RFS6ytsbS1tru8vcTFxu7x8vX19vf4+C5yomAAAAJESURBVHgBvdzLTsJAGEfxr4C2KBcVkQsIDsK8/yPaqIsPzVlyzrKrX/5p0kkXEz81L23otc9NpIbbWia2YVLqdnhlqFlhGWpSDHe1aopsSIpRb8gK0dC3G30b9rVmhWZIimTICsvQtx/FsuYOrWHoDjX3Gu31gzJxdki934WrAIOsAIOsAIOiAMPhPsJTgKGN0BVsYIVsYIVpYIVpYIVpYIVpYIVpYIVpYIVpYIVlAIVgEBRs8BRs8BRs8BRs8BRs8BRs8BRs8BRTNmgKNngKNngKNngKNngKNhiKGxgiOlZoBlaYBlaYBlaYBlaYBlaYBlaYBlaYBlZIBlBMfQMrVAMr2KAqBENSHFHhGEABhi5CV6gGUKgGUKgGUKgGUFwuqgEUvoEVsoEVpoEUpgEUggF+gKTKY+h1fxSlC7/Z+RrxOQ3fcEoAPPHZBlaYBlaYBlaYBlZYBlYIhvLBCstw7PgM7hkiWOEZWGEaWGEaWGEaIsakEAysmHkGVpxmvoEVqoEVpoEVpoEVpoEVpoEVpoEVkoEVgkFQsEFSsEFQsGEcoSvY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnmbNAUT2c2WAo2eAo2eAo2eAo2eAo2eArNEPFACjZ4CjZ4CjZ4CjaIird/rBvFH6llNCvewdli1URWCIakSIZesUaDoFg36dKFWk9zCZDei3TtwmCj7pC22AwikiIZPEU29IpFNliKxa/hC9DFITjQPYhcAAAAAElFTkSuQmCC);
+	background-color: rgba(255,255,255,0.8); background-size: 50%; background-repeat: no-repeat; background-position: 50%; width: 2.7em; height: 2.7em; text-align: center; overflow: hidden; color: #a33; z-index: 2147483642;
+}
+.ath-container.ath-icon:before {
+	position: absolute; top: 0; right: 0; margin: 0; float: none;
+}
+.ath-mandatory .ath-container:before {
+	display: none;
+}
+.ath-container.ath-android:before {
+	float: left; margin: -0.7em 0.5em 0 -0.6em;
+}
+.ath-container.ath-android.ath-icon:before {
+	position: absolute; right: auto; left: 0; margin: 0; float: none;
+}
+/* applied only if the application icon is shown */
+.ath-container.ath-icon {
+
+}
+.ath-action-icon {
+	display: inline-block; vertical-align: middle; background-position: 50%; background-repeat: no-repeat; text-indent: -9999em; overflow: hidden;
+}
+.ath-ios7 .ath-action-icon, .ath-ios8 .ath-action-icon, .ath-ios9 .ath-action-icon{
+	width: 1.6em; height: 1.6em; background-image:url(data:image/png;base64,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);
+	margin-top: -0.3em; background-size: auto 100%;
+}
+.ath-ios6 .ath-action-icon {
+	width: 1.8em; height: 1.8em; background-image:url(data:image/png;base64,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);
+	margin-bottom: 0.4em; background-size: 100% auto;
+}
+.ath-android .ath-action-icon {
+	width: 1.4em; height: 1.5em; background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAANlBMVEVmZmb///9mZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZW6fJrAAAAEXRSTlMAAAYHG21ub8fLz9DR8/T4+RrZ9owAAAB3SURBVHja7dNLDoAgDATQWv4gKve/rEajJOJiWLgg6WzpSyB0aHqHiNj6nL1lovb4C+hYzkSNAT7mryQFAVOeGAj4CjwEtgrWXpD/uZKtwEJApXt+Vn0flzRhgNiFZQkOXY0aADQZCOCPlsZJ46Rx0jhp3IiN2wGDHhxtldrlwQAAAABJRU5ErkJggg==);
+	background-size: 100% auto;
+}
+.ath-container p {
+	margin: 0; padding: 0; position: relative; z-index: 2147483642; text-shadow: 0 0.1em 0 #fff; font-size: 1.1em;
+}
+.ath-ios.ath-phone:after {
+	content: ''; background: #eee; position: absolute; width: 2em; height: 2em; bottom: -0.9em; left: 50%; margin-left: -1em; -webkit-transform: scaleX(0.9) rotate(45deg); transform: scaleX(0.9) rotate(45deg); box-shadow: 0.2em 0.2em 0 #d1d1d1;
+}
+.ath-ios.ath-tablet:after {
+	content: ''; background: #eee; position: absolute; width: 2em; height: 2em; top: -0.9em; left: 50%; margin-left: -1em; -webkit-transform: scaleX(0.9) rotate(45deg); transform: scaleX(0.9) rotate(45deg); z-index: 2147483641;
+}
+.ath-application-icon {
+	position: relative; padding: 0; border: 0; margin: 0 auto 0.2em auto; height: 6em; width: 6em; z-index: 2147483642;
+}
+.ath-container.ath-ios .ath-application-icon {
+	border-radius: 1em; box-shadow: 0 0.2em 0.4em rgba(0,0,0,0.3), inset 0 0.07em 0 rgba(255,255,255,0.5); margin: 0 auto 0.4em auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Media queries!
+-------------------------------------------------------------------------------*/
+/* ----- Mobile and Tablet Landscape Views ----- */
+@media only screen and (orientation: landscape) {
+	.ath-container.ath-phone { width: 24em; }
+	.ath-android.ath-phone { margin-left: -12em; }
+	.ath-ios.ath-phone { margin-left: -12em; }
+	.ath-ios6:after { left: 39%; }
+	.ath-ios8.ath-phone { left: auto; bottom: auto; right: 0.4em; top: 1.8em; }
+	.ath-ios8.ath-phone:after { bottom: auto; top: -0.9em; left: 68%; z-index: 2147483641; box-shadow: none; }
+}
