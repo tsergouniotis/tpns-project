@@ -1,0 +1,11 @@
+task copyToDockerFolder << {
+    copy{	
+    	from('access-module/')
+    	into('../tpns-docker-images/webserver/webapp/access-module')
+    }
+    copy{	
+    	from('global-module/')
+    	into('../tpns-docker-images/webserver/webapp/global-module')
+    }
+}
+
